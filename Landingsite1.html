@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.navbar {
+  overflow: hidden;
+  background-color: #333;
+}
+
+.navbar a {
+  float: left;
+  font-size: 20px;
+  color: white;
+  text-align: center;
+  padding: 14px 29px;
+  text-decoration: none;
+}
+
+.navbar .search{
+float:right;
+}
+
+.navbar input[type="text"]{
+margin-top:8px;
+padding:6px;
+padding-right:20px;
+margin-right:20px;
+border:none;
+font-size:20px;
+}
+
+.navbar input[type="text"]:hover{
+margin-top:8px;
+padding:6px;
+border-style:solid;
+border-color: #92a8d1;
+background-color:#222;
+font-size:20px;
+color:white;
+font-size:20px;
+}
+
+.navbar .search button{
+margin-top:8px;
+padding:6px;
+border:none;
+font-size:20px;
+pointer:cursor;
+background-color:#ddd;
+margin-right:10px;
+}
+
+.navbar .search button:hover{
+margin-top:8px;
+width:100px;
+padding:6px;
+border-radius:3px;;
+font-size:20px;
+pointer:cursor;
+background-color:red;
+margin-right:10px;
+}
+
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+.dropdown .dropbtn {
+  font-size: 20px;  
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 29px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn {
+  background-color: red;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 14px 14px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: orange;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+.image{
+  color:white;
+  padding-top:20px;
+  background-image: url("img.jpg");
+  background-color: white; 
+  height:530px;
+  background-position: center; 
+  background-repeat: no-repeat; 
+  background-size: cover; 
+}
+
+ #clockdiv{ 
+    font-family:times-new-roman; 
+    color: white; 
+    display: inline-block; 
+    font-weight: 200; 
+    text-align: center; 
+    font-size: 30px;
+    margin-left:450px;	
+} 
+#clockdiv > div{ 
+    padding: 10px; 
+    border-radius: 3px; 
+    background: #2C2D31; 
+    display: inline-block; 
+} 
+#clockdiv div > span{ 
+    padding: 15px; 
+    border-radius: 3px; 
+    background: black; 
+    display: inline-block; 
+} 
+smalltext{ 
+    padding-top: 5px; 
+    font-size: 16px; 
+} 
+.heading{
+margin-left:450px;
+}
+
+</style>
+</head>
+<body>
+
+<div class="navbar">
+  <a href="#home">Home</a>
+  <a href="#news">News</a>
+  <div class="dropdown">
+    <button class="dropbtn">Contact Us 
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="#">E-mail</a>
+      <a href="#">Facebook</a>
+      <a href="#">Linkedin</a>
+    </div>
+  </div>
+  <a href="#news">About</a> 
+	<div class="search">
+	<form>
+	<input type="text" placeholder="Search here">
+	<button>Search</button>
+	</form>	
+	</div>
+</div>
+<div class="image">
+<h1 class="heading">New Year begins in:</h1> 
+<div id="clockdiv"> 
+  <div> 
+    <span class="days" id="day"></span> 
+    <div class="smalltext">Days</div> 
+  </div> 
+  <div> 
+    <span class="hours" id="hour"></span> 
+    <div class="smalltext">Hours</div> 
+  </div> 
+  <div> 
+    <span class="minutes" id="minute"></span> 
+    <div class="smalltext">Minutes</div> 
+  </div> 
+  <div> 
+    <span class="seconds" id="second"></span> 
+    <div class="smalltext">Seconds</div> 
+  </div> 
+</div> 
+</div>
+<script> 
+  
+var deadline = new Date("dec 31, 2019 00:00:00").getTime(); 
+  
+var x = setInterval(function() { 
+  
+var now = new Date().getTime(); 
+var t = deadline - now; 
+var days = Math.floor(t / (1000 * 60 * 60 * 24)); 
+var hours = Math.floor((t%(1000 * 60 * 60 * 24))/(1000 * 60 * 60)); 
+var minutes = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60)); 
+var seconds = Math.floor((t % (1000 * 60)) / 1000); 
+document.getElementById("day").innerHTML =days ; 
+document.getElementById("hour").innerHTML =hours; 
+document.getElementById("minute").innerHTML = minutes;  
+document.getElementById("second").innerHTML =seconds;  
+if (t < 0) { 
+        clearInterval(x); 
+        document.getElementById("demo").innerHTML = "TIME UP"; 
+        document.getElementById("day").innerHTML ='0'; 
+        document.getElementById("hour").innerHTML ='0'; 
+        document.getElementById("minute").innerHTML ='0' ;  
+        document.getElementById("second").innerHTML = '0'; } 
+}, 1000); 
+</script> 
+</body>
+</html>
